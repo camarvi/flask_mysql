@@ -47,7 +47,7 @@ def get_contact(id):
         return render_template('edit-contact.html', contact = data[0])
 
 # Actualiza contacto
- @app.route('/update/<id>', methods=['POST'])   
+@app.route('/update/<id>', methods=['POST'])   
  def update_contact(id):
          if request.method == 'POST':
                  fullname = request.form['fullname']
