@@ -12,6 +12,25 @@
     <input type="text" name="phone" placeholder="telefono">
     <input type="text" name="email" placeholder="email">
     <button type="submit">Guardar</button>
-
-
 </form>
+
+<table>
+    <thead>
+        <tr>
+            <td>Nombre</td>
+            <td>Telefono</td>
+            <td>Email</td>
+            <td>Operaciones</td_>
+        </tr>
+    </thead>
+    <tbody>
+        {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.1 }}</td>
+                <td>{{ contact.2 }}</td>
+                <td>{{ contact.3 }}</td>
+                <td></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
