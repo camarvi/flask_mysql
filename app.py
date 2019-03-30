@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_mysqldb import MySQL
+#from flask_mysqldb import MySQL
+from class_contacto import Contacto
 
 app = Flask(__name__)
 
@@ -9,7 +10,7 @@ app.config['MYSQL_USER']='root'
 app.config['MYSQL_PASSWORD']='servidor'
 app.config['MYSQL_DB']='flaskcontact'
 
-mysql =  MySQL(app)
+#mysql =  MySQL(app)
 
 #Configuraciones
 app.secret_key = 'mysecretkey'
@@ -17,10 +18,12 @@ app.secret_key = 'mysecretkey'
 
 @app.route('/')
 def index():
-    cur = mysql.connection.cursor()    
-    cur.execute('SELECT * FROM contacts')
-    data = cur.fetchall()
-    return render_template('index.html', contacts = data)
+    contactos = Contacto()  
+    lista_contactos = contactos.leer_contactos()  
+    #cur = mysql.connection.cursor()    
+    #cur.execute('SELECT * FROM contacts')
+    #data = cur.fetchall()
+    return render_template('index.html', contacts = lista_contactos)
 
 
 # nuevo contacto
